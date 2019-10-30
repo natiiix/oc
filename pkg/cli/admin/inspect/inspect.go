@@ -81,6 +81,16 @@ func NewInspectOptions(streams genericclioptions.IOStreams) *InspectOptions {
 	}
 }
 
+func NewInspectOptionsExtended(streams genericclioptions.IOStreams, destDir string) *InspectOptions {
+	return &InspectOptions{
+		printFlags:  genericclioptions.NewPrintFlags("gathered").WithDefaultOutput("yaml").WithTypeSetter(scheme.Scheme),
+		configFlags: genericclioptions.NewConfigFlags(true),
+		overwrite:   true,
+		IOStreams:   streams,
+		destDir:     destDir,
+	}
+}
+
 func NewCmdInspect(streams genericclioptions.IOStreams, parentCommandPath string) *cobra.Command {
 	o := NewInspectOptions(streams)
 	commandPath := strings.TrimSpace(parentCommandPath + " inspect")
