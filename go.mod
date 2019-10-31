@@ -1,4 +1,4 @@
-module github.com/openshift/oc
+module github.com/natiiix/oc
 
 go 1.12
 
